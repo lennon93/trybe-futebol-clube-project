@@ -3,10 +3,10 @@ FROM node:16.14-alpine
 # Mudar para o diretório de trabalho /app-backend
 WORKDIR /app-backend
 # Copiar os package.json, package-lock.json e packages.npm para o container
-COPY package*.json /app-backend/
-COPY packages.npm /app-backend/
+COPY package*.json ./
+COPY packages.npm ./
 # Instalar as dependências Node
-RUN npm ci
+RUN npm install
 # Copiar o restante dos arquivos da aplicação para o container
 COPY . .
 # Sinalize que aplicação expõe a porta 3001
