@@ -1,5 +1,6 @@
-export default interface IMatch {
-  id?: number,
+import { Identifiable } from '..';
+
+export default interface IMatch extends Identifiable {
   homeTeamId: number,
   homeTeamGoals: number,
   awayTeamId: number,
