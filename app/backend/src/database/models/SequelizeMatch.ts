@@ -7,6 +7,7 @@ import {
 } from 'sequelize';
 import db from '.';
 import SequelizeTeam from './SequelizeTeam';
+import ITeam from '../../Interfaces/Team/ITeam';
 
 class SequelizeMatch extends Model<InferAttributes<SequelizeMatch>,
 InferCreationAttributes<SequelizeMatch>> {
@@ -16,6 +17,8 @@ InferCreationAttributes<SequelizeMatch>> {
   declare awayTeamId: number;
   declare awayTeamGoals: number;
   declare inProgress: boolean;
+  declare homeTeam?: ITeam;
+  declare awayTeam?: ITeam;
 }
 
 SequelizeMatch.init({

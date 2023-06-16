@@ -8,8 +8,8 @@ export default class MatchService {
     private matchModel: IMatchModel<IMatch> = new MatchModel(),
   ) { }
 
-  public async getAllMatchs(): Promise<ServiceResponse<IMatch[]>> {
-    const allMatchs = await this.matchModel.findAll();
+  public async getAllMatchs(query?: boolean): Promise<ServiceResponse<IMatch[]>> {
+    const allMatchs = await this.matchModel.findAll(query);
     return { status: 'SUCCESSFUL', data: allMatchs };
   }
 }

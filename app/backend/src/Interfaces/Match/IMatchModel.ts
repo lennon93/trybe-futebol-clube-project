@@ -1,1 +1,1 @@
-export type IMatchModel<T> = { findAll(): Promise<T[]>, };
+export type IMatchModel<T> = { findAll(query?: boolean): Promise<T[]>, };
