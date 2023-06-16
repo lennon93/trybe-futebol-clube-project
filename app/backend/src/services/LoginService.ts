@@ -1,11 +1,11 @@
 import { TokenGenerator } from '../Interfaces/TokenGenerator';
 import { Encrypter } from '../Interfaces/Encrypter';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
-import UserModel from '../models/UserModel';
+import { IUserModel } from '../Interfaces/User/IUserModel';
 
 export default class LoginService {
   constructor(
-    private userModel: UserModel,
+    private userModel: IUserModel,
     private encrypter: Encrypter,
     private tokenGenerator: TokenGenerator,
   ) { }
@@ -19,6 +19,7 @@ export default class LoginService {
     if (!isValid) {
       return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
     }
+
     const token = this.tokenGenerator.generate(user);
 
     return { status: 'SUCCESSFUL', data: { token } };

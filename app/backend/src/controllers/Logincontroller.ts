@@ -3,7 +3,7 @@ import LoginService from '../services/LoginService';
 
 export default class LoginController {
   constructor(
-    private loginService = new LoginService(),
+    private loginService: LoginService,
   ) { }
 
   public async login(req: Request, res: Response) {

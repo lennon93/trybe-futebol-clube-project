@@ -1,7 +1,7 @@
 import * as bcrypt from 'bcryptjs';
 import { Encrypter } from '../Interfaces/Encrypter';
 
-export default class EncrypterBcryptService implements Encrypter {
+export default class EncrypterService implements Encrypter {
   private bcrypt = bcrypt;
 
   async encrypt(password: string): Promise<string> {
