@@ -1,4 +1,1 @@
-import { ICRUDModel } from '../ICRUDModel';
-import IMatch from './IMatch';
-
-export type IMatchModel = ICRUDModel<IMatch>;
+export type IMatchModel<T> = { findAll(): Promise<T[]>, };

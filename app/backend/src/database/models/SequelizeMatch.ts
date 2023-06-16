@@ -29,6 +29,10 @@ SequelizeMatch.init({
     type: DataTypes.INTEGER,
     allowNull: false,
     field: 'home_team_id',
+    references: {
+      model: 'teams',
+      key: 'id',
+    },
   },
   homeTeamGoals: {
     type: DataTypes.INTEGER,
@@ -39,6 +43,10 @@ SequelizeMatch.init({
     type: DataTypes.INTEGER,
     allowNull: false,
     field: 'away_team_id',
+    references: {
+      model: 'teams',
+      key: 'id',
+    },
   },
   awayTeamGoals: {
     type: DataTypes.INTEGER,
@@ -57,10 +65,7 @@ SequelizeMatch.init({
   underscored: true,
 });
 
-SequelizeMatch.belongsTo(SequelizeTeam, { foreignKey: 'home_team_id', as: 'HomeTeamId' });
-SequelizeMatch.belongsTo(SequelizeTeam, { foreignKey: 'away_team_id', as: 'AwayTeamId' });
-
-SequelizeTeam.hasMany(SequelizeMatch, { foreignKey: 'home_team_id', as: 'HomeTeamId' });
-SequelizeTeam.hasMany(SequelizeMatch, { foreignKey: 'away_team_id', as: 'AwayTeamId' });
+SequelizeMatch.belongsTo(SequelizeTeam, { foreignKey: 'homeTeamId', as: 'homeTeam' });
+SequelizeMatch.belongsTo(SequelizeTeam, { foreignKey: 'awayTeamId', as: 'awayTeam' });
 
 export default SequelizeMatch;
