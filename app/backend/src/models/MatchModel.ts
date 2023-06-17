@@ -23,6 +23,6 @@ export default class MatchModel implements IMatchModel<IMatch> {
     const match = await this.modelSequelize.findByPk(id);
     if (!match) return null;
     await this.modelSequelize.update(data, { where: { id } });
-    return { ...match };
+    return match;
   }
 }

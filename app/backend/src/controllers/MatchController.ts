@@ -20,10 +20,20 @@ export default class MatchController {
   public async finishMatch(req: Request, res: Response) {
     const id = Number(req.params.id);
     const serviceResponse = await this.matchService.finishMatch(id);
-    if (!serviceResponse || serviceResponse.status !== 'SUCCESSFUL') {
-      return res.status(404).json({ message: 'Match not found' });
+    if (serviceResponse.status !== 'SUCCESSFUL') {
+      return res.status(404).json(serviceResponse.data);
     }
 
-    return res.status(200).json({ message: 'Finished' });
+    return res.status(200).json(serviceResponse.data);
+  }
+
+  public async updateMatch(req: Request, res: Response) {
+    const id = Number(req.params.id);
+    const serviceResponse = await this.matchService.updateMatch(id, req.body);
+    if (serviceResponse.status !== 'SUCCESSFUL') {
+      return res.status(404).json(serviceResponse.data);
+    }
+
+    return res.status(200).json(serviceResponse.data);
   }
 }
