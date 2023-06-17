@@ -1,3 +1,4 @@
+import { ID } from '../Interfaces';
 import SequelizeTeam from '../database/models/SequelizeTeam';
 import IMatch from '../Interfaces/Match/IMatch';
 import { IMatchModel } from '../Interfaces/Match/IMatchModel';
@@ -15,17 +16,13 @@ export default class MatchModel implements IMatchModel<IMatch> {
     ],
     where: filterInProgress });
 
-    const resultMatchs = allMatchs.map((match) => ({
-      id: match.id,
-      homeTeamId: match.homeTeamId,
-      homeTeamGoals: match.homeTeamGoals,
-      awayTeamId: match.awayTeamId,
-      awayTeamGoals: match.awayTeamGoals,
-      inProgress: match.inProgress,
-      homeTeam: match.homeTeam,
-      awayTeam: match.awayTeam,
-    }));
+    return allMatchs;
+  }
 
-    return resultMatchs;
+  async update(id: ID, data: Partial<IMatch>):Promise<IMatch | null> {
+    const match = await this.modelSequelize.findByPk(id);
+    if (!match) return null;
+    await this.modelSequelize.update(data, { where: { id } });
+    return { ...match };
   }
 }

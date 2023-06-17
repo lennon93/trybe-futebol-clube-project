@@ -26,7 +26,7 @@ class LoginValidation {
       return res.status(401).json({ message: 'Token must be a valid token' });
     }
 
-    req.body.authorization = hasToken;
+    req.body.token = hasToken;
     next();
   }
 }

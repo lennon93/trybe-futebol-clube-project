@@ -17,8 +17,8 @@ export default class LoginController {
   }
 
   public async getRole(req: Request, res: Response) {
-    const { authorization } = req.body;
-    const { email } = authorization;
+    const { token } = req.body;
+    const { email } = token;
     const serviceResponse = await this.loginService.getRole(email);
     if (serviceResponse.status !== 'SUCCESSFUL') {
       return res.status(401).json(serviceResponse.data);
