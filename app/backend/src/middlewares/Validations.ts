@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import TokenGenerator from '../utils/TokenGenerator';
 
-class LoginValidation {
+class Validations {
   static validateLogin(req: Request, res: Response, next: NextFunction): Response | void {
     const { email, password } = req.body;
     const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -29,6 +29,15 @@ class LoginValidation {
     req.body.token = hasToken;
     next();
   }
+
+  static validateMatchs(req: Request, res: Response, next: NextFunction): Response | void {
+    const { homeTeamId, awayTeamId } = req.body;
+    if (homeTeamId === awayTeamId) {
+      return res.status(422).json({
+        message: 'It is not possible to create a match with two equal teams' });
+    }
+    next();
+  }
 }
 
-export default LoginValidation;
+export default Validations;

@@ -1,7 +1,7 @@
 import { ID, NewEntity } from '.';
 
 export interface ICRUDModelCreator<T> {
-  create(data: NewEntity<T>): Promise<T>,
+  create(data: NewEntity<T>): Promise<T | null>,
 }
 
 export interface ICRUDModelReader<T> {

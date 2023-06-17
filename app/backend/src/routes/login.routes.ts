@@ -3,7 +3,7 @@ import LoginController from '../controllers/Logincontroller';
 import LoginService from '../services/LoginService';
 import UserModel from '../models/UserModel';
 import EncrypterService from '../services/EncrypterService';
-import LoginValidation from '../middlewares/LoginValidation';
+import Validations from '../middlewares/Validations';
 
 const encrypter = new EncrypterService();
 const userModel = new UserModel();
@@ -13,12 +13,12 @@ const loginRouter = Router();
 
 loginRouter.get(
   '/login/role',
-  LoginValidation.validateToken,
+  Validations.validateToken,
   (req, res) => loginController.getRole(req, res),
 );
 loginRouter.post(
   '/login',
-  LoginValidation.validateLogin,
+  Validations.validateLogin,
   (req, res) => loginController.login(req, res),
 );
 
