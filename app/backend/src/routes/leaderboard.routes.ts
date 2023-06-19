@@ -19,4 +19,9 @@ leaderboardRouter.get(
   (req: Request, res: Response) => leaderboardController.getLeaderboardAway(req, res),
 );
 
+leaderboardRouter.get(
+  '/leaderboard',
+  (req: Request, res: Response) => leaderboardController.getLeaderboardTotal(req, res),
+);
+
 export default leaderboardRouter;

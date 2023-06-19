@@ -120,4 +120,24 @@ export default class CreateLeaderboard {
       }); return leaderboard.push(t);
     }); return leaderboard as ILeaderboard[];
   }
+
+  static total(home: ILeaderboard[], away: ILeaderboard[]):ILeaderboard[] {
+    const leaderboard = [] as ILeaderboard[];
+    home.map((team) => {
+      const h = team;
+      away.forEach((a) => {
+        if (h.name === a.name) {
+          h.totalPoints += a.totalPoints;
+          h.totalGames += a.totalGames;
+          h.totalVictories += a.totalVictories;
+          h.totalDraws += a.totalDraws;
+          h.totalLosses += a.totalLosses;
+          h.goalsFavor += a.goalsFavor;
+          h.goalsOwn += a.goalsOwn;
+          h.goalsBalance += a.goalsBalance;
+          h.efficiency = this.eff(h.totalPoints, h.totalGames);
+        }
+      }); return leaderboard.push(h);
+    }); return leaderboard as ILeaderboard[];
+  }
 }
