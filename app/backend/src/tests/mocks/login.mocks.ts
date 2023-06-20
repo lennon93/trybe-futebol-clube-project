@@ -20,6 +20,10 @@ const userMock = {
     password: '$2a$08$xi.Hxk1czAO0nZR..B393u10aED0RQ1N3PAEXQ7HxtLjKPEZBu.PW'
   };
 
+const token = {
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInVzZXJuYW1lIjoiQWRtaW4iLCJpZCI6MSwiaWF0IjoxNjg3MjQ2NTcwfQ.-lnRtYpy5nvrCeheMHQR1ZRH_ZnA59F-n5vdhVIQ8Vg"
+}
+
 export default {
   noPasswordLoginBody,
   noEmailLoginBody,
@@ -27,4 +31,5 @@ export default {
   notExistingPassword,
   validLoginBody,
   userMock,
+  token,
 };

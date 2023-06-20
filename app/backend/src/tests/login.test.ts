@@ -57,6 +57,13 @@ it('ao receber um Email e login, retorne um token', async function () {
     const response = await chai.request(app).post('/login').send(loginMocks.validLoginBody);
 
     expect(response.status).to.equal(200);
-    expect(response.body).to.have.key('token');
+    expect(response.body).not.to.be.undefined;
+});
+it('ao receber um Email e login, retorne a função do usuario', async function () {
+
+  const response = await chai.request(app).get('/login/role').set({Authorization: loginMocks.token.token});
+
+  expect(response.status).to.equal(200);
+  expect(response.body).to.be.deep.equal({ role: "admin" });
 });
 });

@@ -6,7 +6,6 @@ export default class EncrypterService implements Encrypter {
 
   async encrypt(password: string): Promise<string> {
     const hash = await this.bcrypt.hash(password, 10);
-
     return hash;
   }
 
