@@ -11,17 +11,16 @@ const leaderboardController = new LeaderboardController(leaderboardService);
 const leaderboardRouter = Router();
 
 leaderboardRouter.get(
+  '/leaderboard',
+  (req: Request, res: Response) => leaderboardController.getLeaderboardTotal(req, res),
+);
+leaderboardRouter.get(
   '/leaderboard/home',
   (req: Request, res: Response) => leaderboardController.getLeaderboardHome(req, res),
 );
 leaderboardRouter.get(
   '/leaderboard/away',
   (req: Request, res: Response) => leaderboardController.getLeaderboardAway(req, res),
-);
-
-leaderboardRouter.get(
-  '/leaderboard',
-  (req: Request, res: Response) => leaderboardController.getLeaderboardTotal(req, res),
 );
 
 export default leaderboardRouter;
