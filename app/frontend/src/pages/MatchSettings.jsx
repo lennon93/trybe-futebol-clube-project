@@ -22,7 +22,6 @@ const MatchSettings = () => {
   useEffect(() => {
     (async () => {
       const token = localStorage.getItem('token') || '';
-
       if (!token) return navigate('/');
 
       setToken(token);
@@ -71,6 +70,7 @@ const MatchSettings = () => {
   };
   const finishMatch = async (id) => {
     await api.patch(`/matches/${id}/finish`);
+    return navigate(`/matches`);
   };
 
   if (!isAuthenticated) return <Loading />;
