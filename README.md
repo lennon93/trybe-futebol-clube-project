@@ -1,8 +1,7 @@
 ![Trybe Futebol Clube](https://github.com/lennon93/trybe-futebol-clube-project/assets/48574942/5abad9aa-8744-4a5e-a6c4-a434890dfce9)
 
 ### Proposta Apresentada: 
-</br>
-</br>
+
 Esse projeto é um site esportivo que mostra as partidas em andamento e encerradas, uma tabela de classificação que é atualizada automaticamente quando a partida se encerra, podendo fazer login como administrador para atualizar as partidas, com gols feitos e/ou encerrado elas, assim como criar novas partidas. </br>
 
 Foi criado todo o backend para receber, manipular, adicionar e deletar dados do banco de dados e envia-los ao frontend para que ele renderize as páginas.
@@ -14,7 +13,7 @@ Tudo isso sendo sempre testados por testes automatizados.
 </br>
 
 ### Conhecimento Utilizado: 
-</br>
+
 - Docker </br>
 - Sequelize </br>
 - Typescript </br>
